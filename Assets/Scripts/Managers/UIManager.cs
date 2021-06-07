@@ -15,7 +15,7 @@ namespace SingularHealth.Managers
             get
             {
                 if (_instance == null)
-                    Debug.LogError("The CommandManager is NULL");
+                    Debug.LogError("The UIManager is NULL");
 
                 return _instance;
             }

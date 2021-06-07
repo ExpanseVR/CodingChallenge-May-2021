@@ -1,4 +1,6 @@
+using SingularHealth.Cube;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static OperationCommand;
 
@@ -83,6 +85,8 @@ namespace SingularHealth.Managers
             int total = 0;
             IOperations currentOperation = new OperationCommand();
 
+            var last = _operationBuffer.Last();
+
             foreach (var operation in _operationBuffer)
             {
                 if (operation.GetOperationType() == OperationType.Store)
@@ -96,6 +100,12 @@ namespace SingularHealth.Managers
                     {
                         int nextInput = operation.GetStoredValue();
                         total = currentOperation.ExecuteOperation(total, nextInput);
+
+                        if (operation == last)
+                        {
+                            var designedCube = CubeDesigner.GetCube(total);
+                            StartCoroutine(SpawnMananger.Instance.GenerateCubes(designedCube.Item1, designedCube.Item2));
+                        }
                     }
                 }
                 else
@@ -103,7 +113,6 @@ namespace SingularHealth.Managers
                     currentOperation = operation;
                 }
             }
-
             UIManager.Instance.SetResultText(total.ToString());
         }
 
