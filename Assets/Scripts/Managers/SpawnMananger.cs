@@ -21,6 +21,7 @@ namespace SingularHealth.Managers
         }
 
         public static event Action<GameObject, CubeState, Vector3> OnSpawnedCube;
+        public static event Action OnCubeReset;
 
         [SerializeField] private GameObject _cubePrefab;
         [SerializeField] private float _distance = 1.1f;
@@ -32,6 +33,12 @@ namespace SingularHealth.Managers
         private void Awake()
         {
             _instance = this;
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+                OnCubeReset?.Invoke();
         }
 
         public IEnumerator GenerateCubes(int size, int remainder)
@@ -91,7 +98,7 @@ namespace SingularHealth.Managers
 
         private void CreateCube(Vector3 currentVector, CubeState state)
         {
-            GameObject newCube = Instantiate(_cubePrefab);
+            GameObject newCube = Instantiate(_cubePrefab, transform);
             _spawnedCubes.Add(newCube);
             OnSpawnedCube?.Invoke(newCube, state, currentVector);
         }

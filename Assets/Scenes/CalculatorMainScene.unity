@@ -2370,6 +2370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c98cd162a35ac1747a2e610469bcc780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _projectileSpeed: 3.5
   _projectilePrefab: {fileID: 3512207166775218811, guid: 13704d0208349014fbb4e878fd0e8d4d, type: 3}
   _spawnPoint: {fileID: 634391034}
 --- !u!1 &1567324927

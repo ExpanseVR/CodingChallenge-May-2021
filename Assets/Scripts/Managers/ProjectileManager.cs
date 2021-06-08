@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ProjectileManager : MonoBehaviour
 {
+    [SerializeField] private float      _projectileSpeed = 1f;
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private Transform  _spawnPoint;
 
@@ -15,9 +16,9 @@ public class ProjectileManager : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                GameObject newProjectile = Instantiate(_projectilePrefab, _spawnPoint.position, Quaternion.identity);
+                GameObject newProjectile = Instantiate(_projectilePrefab, _spawnPoint.position, Quaternion.identity, transform);
                 newProjectile.transform.LookAt(hit.point);
-                newProjectile.GetComponent<Rigidbody>().velocity = newProjectile.transform.forward * 15000 * Time.deltaTime;
+                newProjectile.GetComponent<Rigidbody>().AddForce(newProjectile.transform.forward * 100000 * _projectileSpeed * Time.deltaTime);
             }
         }
     }
