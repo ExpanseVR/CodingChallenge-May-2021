@@ -1,4 +1,5 @@
 using SingularHealth.Managers;
+using SingularHealth.Shader;
 using UnityEngine;
 
 namespace SingularHealth.Cube
@@ -12,9 +13,12 @@ namespace SingularHealth.Cube
         }
 
         [SerializeField] private Color     _usedColor;
+        [SerializeField] private Color     _usedHitColor;
         [SerializeField] private Color     _notUsedColor;
+        [SerializeField] private Color     _notUsedHitColor;
         [SerializeField] private Renderer  _renderer;
         [SerializeField] private Rigidbody _rigidBody;
+        [SerializeField] private HitDetectionShaderController _shaderControl;
 
         private CubeState _currentState = new CubeState();
         private Vector3 _startPosition;
@@ -39,9 +43,9 @@ namespace SingularHealth.Cube
         private void SetStateColour()
         {
             if (_currentState == CubeState.Used)
-                _renderer.material.color = _usedColor;
+                _shaderControl.SetColor(_usedColor, _usedHitColor);
             else
-                _renderer.material.color = _notUsedColor;
+                _shaderControl.SetColor(_notUsedColor, _notUsedHitColor);
         }
 
         private void ResetPosition()

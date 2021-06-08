@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 7088881214496619823}
   - component: {fileID: 8984168098314796525}
   - component: {fileID: 7127150090596354952}
-  - component: {fileID: 1128761901529559733}
   - component: {fileID: -7297912100642603714}
+  - component: {fileID: 1128761901529559733}
+  - component: {fileID: -2939268366801441855}
+  - component: {fileID: -7336806686984798214}
   m_Layer: 0
   m_Name: CubePrefab
   m_TagString: Untagged
@@ -62,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: b2bea2fd456fc7748b41f48dcee574b3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,22 +99,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1128761901529559733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7347714057342390163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ecf57589d18f524ead6652e91ad983d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _usedColor: {r: 0.9056604, g: 0.3901744, b: 0.42047992, a: 1}
-  _notUsedColor: {r: 0.45882353, g: 0.6741803, b: 0.8862745, a: 1}
-  _renderer: {fileID: 8984168098314796525}
-  _rigidBody: {fileID: -7297912100642603714}
 --- !u!54 &-7297912100642603714
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -129,3 +115,47 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &1128761901529559733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7347714057342390163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecf57589d18f524ead6652e91ad983d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _usedColor: {r: 0.9056604, g: 0.3901744, b: 0.42047992, a: 1}
+  _usedHitColor: {r: 0.990566, g: 0.9075803, b: 0.38002843, a: 1}
+  _notUsedColor: {r: 0.45882353, g: 0.6741803, b: 0.8862745, a: 1}
+  _notUsedHitColor: {r: 0.8836478, g: 1, b: 0.9975765, a: 1}
+  _renderer: {fileID: 8984168098314796525}
+  _rigidBody: {fileID: -7297912100642603714}
+  _shaderControl: {fileID: -7336806686984798214}
+--- !u!114 &-2939268366801441855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7347714057342390163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95332f5e9cb2dc24cb7536419b0432fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shaderControl: {fileID: -7336806686984798214}
+--- !u!114 &-7336806686984798214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7347714057342390163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77b40c7aac4e5e045ab9a9b52fbeea49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
