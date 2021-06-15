@@ -1,6 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using SingularHealth.UI;
 using TMPro;
 using UnityEngine;
 using static OperationCommand;
@@ -21,15 +19,17 @@ namespace SingularHealth.Managers
             }
         }
 
-        [SerializeField] private TMP_Dropdown _operationDropDown;
-        [SerializeField] private TMP_Dropdown _inputDropDown;
-        [SerializeField] private TMP_Text     _operationHistoryText;
-        [SerializeField] private TMP_Text     _resultText;
+        [SerializeField] private InputDropDownController _inputController;
+        [SerializeField] private TMP_Dropdown           _operationDropDown;
+        [SerializeField] private TMP_Dropdown           _inputDropDown;
+        [SerializeField] private TMP_Text               _operationHistoryText;
+        [SerializeField] private TMP_Text               _resultText;
 
         private void Awake()
         {
             _instance = this;
         }
+
 
         private void Update()
         {
@@ -49,11 +49,8 @@ namespace SingularHealth.Managers
 
         public void InputItemClick()
         {
-            IOperations newClick = new OperationCommand();
             int parsedInteger = int.Parse(_inputDropDown.options[_inputDropDown.value].text);
-            newClick.Operation(OperationType.Store);
-            newClick.StoreValue(parsedInteger);
-            CommandManager.Instance.AddOperation(newClick);
+            _inputController.SetButtons(parsedInteger);
         }
 
         public void UndoClick()

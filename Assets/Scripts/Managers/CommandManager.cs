@@ -1,3 +1,4 @@
+using SingularHealth.Command;
 using SingularHealth.Cube;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,12 +21,44 @@ namespace SingularHealth.Managers
             }
         }
 
-        private List<IOperations> _operationBuffer     = new List<IOperations>();
+        private List<IOperations> _operationBuffer = new List<IOperations>();
         private List<IOperations> _operationRedoBuffer = new List<IOperations>();
 
         private void Awake()
         {
             _instance = this;
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                _operationRedoBuffer.Add(OperationToString.ToOperation(OperationType.Store.ToString() + ":3"));
+                print(_operationRedoBuffer[0].GetOperationType());
+            }
+        }
+
+        public void SetOperations (OperationBuffer operationBuffer)
+        {
+            _operationBuffer.Clear();
+            foreach(var operation in operationBuffer.operationsList)
+            {
+                IOperations convertedOperation = OperationToString.ToOperation(operation);
+                _operationBuffer.Add(convertedOperation);
+            }
+
+            ExecuteOperations();
+        }
+
+        public OperationBuffer GetOperations()
+        {
+            OperationBuffer operationBuffer = new OperationBuffer();
+            foreach (var operation in _operationBuffer)
+            {
+                string convertedOperation = OperationToString.ToString(operation);
+                operationBuffer.operationsList.Add(convertedOperation);
+            }
+            return operationBuffer;
         }
 
         public void AddOperation(IOperations newOperation)
